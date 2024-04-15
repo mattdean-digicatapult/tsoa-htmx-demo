@@ -1,0 +1,11 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RootTemplates Root should render root page 1`] = `"<!DOCTYPE html><html><head><script src="lib/htmx.org/htmx.min.js"></script><link rel="icon" type="image/ico" sizes="48x48" href="/public/images/favicon.ico"/><link rel="stylesheet" type="text/css" href="/public/styles/main.css"/><title>title</title></head><body><div id="counter" hx-get="/counter" hx-trigger="every 1s" hx-swap="outerHTML">0</div></body></html>"`;
+
+exports[`RootTemplates Root should render counter 1 on second load 1`] = `"<!DOCTYPE html><html><head><script src="lib/htmx.org/htmx.min.js"></script><link rel="icon" type="image/ico" sizes="48x48" href="/public/images/favicon.ico"/><link rel="stylesheet" type="text/css" href="/public/styles/main.css"/><title>title</title></head><body><div id="counter" hx-get="/counter" hx-trigger="every 1s" hx-swap="outerHTML">1</div></body></html>"`;
+
+exports[`RootTemplates Counter should render the counter with value 0 1`] = `"<div id="counter" hx-get="/counter" hx-trigger="every 1s" hx-swap="outerHTML">0</div>"`;
+
+exports[`RootTemplates Counter should render the counter on second call with value 1 1`] = `"<div id="counter" hx-get="/counter" hx-trigger="every 1s" hx-swap="outerHTML">1</div>"`;
+
+exports[`RootTemplates Root should escape html in title 1`] = `"<!DOCTYPE html><html><head><script src="lib/htmx.org/htmx.min.js"></script><link rel="icon" type="image/ico" sizes="48x48" href="/public/images/favicon.ico"/><link rel="stylesheet" type="text/css" href="/public/styles/main.css"/><title>&lt;div&gt;Malicious Content&lt;/div&gt;</title></head><body><div id="counter" hx-get="/counter" hx-trigger="every 1s" hx-swap="outerHTML">0</div></body></html>"`;

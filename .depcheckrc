@@ -1,0 +1,9 @@
+ignores: [
+  '@kitajs/html',
+  '@kitajs/ts-html-plugin',
+  'htmx.org',
+  '@types/bun',
+  'prettier-plugin-organize-imports',
+  'reflect-metadata',
+  'bun:test',
+]

@@ -1,0 +1,14 @@
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+#counter {
+  display: grid;
+  height: 100dvh;
+  align-items: center;
+  justify-items: center;
+  font-family: system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 10rem;
+}
+
