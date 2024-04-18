@@ -1,25 +1,18 @@
 /// <reference types="@kitajs/html/htmx.d.ts" />
 
 import { singleton } from 'tsyringe'
-import { asPage, Header } from './common'
+import { Page } from './common'
 
 @singleton()
 export default class RootTemplates {
   constructor() {}
 
-  public Root = (title: string, count: number) =>
-    asPage(
-      <html>
-        <head>
-          <Header />
-          <title>{Bun.escapeHTML(title)}</title>
-        </head>
-        <body hx-ext="json-enc">
-          <this.Counter count={count} />
-          <this.Button disabled={false} />
-        </body>
-      </html>
-    )
+  public Root = (title: string, count: number) => (
+    <Page title={title}>
+      <this.Counter count={count} />
+      <this.Button disabled={false} />
+    </Page>
+  )
 
   public Counter = ({ count }: { count: number }) => (
     <div id="counter" hx-get="/counter" hx-trigger="button-click from:body" hx-swap="outerHTML">
