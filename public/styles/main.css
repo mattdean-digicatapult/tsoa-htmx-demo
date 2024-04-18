@@ -2,13 +2,14 @@
   box-sizing: border-box;
 }
 
-#counter {
+body {
   display: grid;
-  height: 100dvh;
-  align-items: center;
+  padding-top: 10vh;
+  align-items: flex-start;
   justify-items: center;
   font-family: system-ui, sans-serif;
   font-weight: 500;
   font-size: 10rem;
 }
+
 

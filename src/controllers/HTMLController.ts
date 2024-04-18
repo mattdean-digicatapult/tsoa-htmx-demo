@@ -4,8 +4,12 @@ import { Controller } from 'tsoa'
 export type HTML = Readable
 
 export abstract class HTMLController extends Controller {
-  protected async html(element: JSX.Element): Promise<HTML> {
+  public async html(element: JSX.Element): Promise<HTML> {
     this.setHeader('Content-Type', 'text/html')
     return Readable.from(Buffer.from(await element, 'utf8'))
+  }
+
+  public triggerEvent(eventName: string): void {
+    this.setHeader('HX-Trigger', eventName)
   }
 }

@@ -6,20 +6,19 @@ describe('RootTemplates', () => {
   describe('Root', () => {
     it('should render root page', async () => {
       const templates = new RootTemplates()
-      const rendered = await templates.Root('title')
+      const rendered = await templates.Root('title', 0)
       expect(rendered).toMatchSnapshot()
     })
 
     it('should escape html in title', async () => {
       const templates = new RootTemplates()
-      const rendered = await templates.Root('<div>Malicious Content</div>')
+      const rendered = await templates.Root('<div>Malicious Content</div>', 0)
       expect(rendered).toMatchSnapshot()
     })
 
     it('should render counter 1 on second load', async () => {
       const templates = new RootTemplates()
-      await templates.Root('title')
-      const rendered = await templates.Root('title')
+      const rendered = await templates.Root('title', 1)
       expect(rendered).toMatchSnapshot()
     })
   })
@@ -27,14 +26,21 @@ describe('RootTemplates', () => {
   describe('Counter', () => {
     it('should render the counter with value 0', async () => {
       const templates = new RootTemplates()
-      const rendered = await templates.Counter()
+      const rendered = await templates.Counter({ count: 0 })
       expect(rendered).toMatchSnapshot()
     })
 
     it('should render the counter on second call with value 1', async () => {
       const templates = new RootTemplates()
-      await templates.Counter()
-      const rendered = await templates.Counter()
+      const rendered = await templates.Counter({ count: 1 })
+      expect(rendered).toMatchSnapshot()
+    })
+  })
+
+  describe('Button', () => {
+    it('should render the button', async () => {
+      const templates = new RootTemplates()
+      const rendered = await templates.Button()
       expect(rendered).toMatchSnapshot()
     })
   })

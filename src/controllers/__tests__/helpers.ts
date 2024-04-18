@@ -2,13 +2,19 @@ import { Readable } from 'node:stream'
 
 import pino from 'pino'
 
-import RootTemplates from '../../templates/root'
+import Counter from '../../models/counter'
+import RootTemplates from '../../views/root'
 
 export const templateMock = {
   Root: (s: string) => `root_${s}_root`,
   Counter: () => `counter`,
+  Button: () => `button`,
 } as RootTemplates
 export const mockLogger = pino({ level: 'silent' })
+export const counterMock = {
+  get: () => 42,
+  increment: () => 43,
+} as Counter
 
 export const toHTMLString = async (stream: Readable) => {
   const chunks = []
