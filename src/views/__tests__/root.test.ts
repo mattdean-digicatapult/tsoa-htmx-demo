@@ -38,9 +38,15 @@ describe('RootTemplates', () => {
   })
 
   describe('Button', () => {
-    it('should render the button', async () => {
+    it('should render the enabled button', async () => {
       const templates = new RootTemplates()
-      const rendered = await templates.Button()
+      const rendered = await templates.Button({ disabled: false })
+      expect(rendered).toMatchSnapshot()
+    })
+
+    it('should render the disabled button', async () => {
+      const templates = new RootTemplates()
+      const rendered = await templates.Button({ disabled: true })
       expect(rendered).toMatchSnapshot()
     })
   })

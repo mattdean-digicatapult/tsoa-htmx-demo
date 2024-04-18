@@ -16,20 +16,31 @@ export default class RootTemplates {
         </head>
         <body>
           <this.Counter count={count} />
-          <this.Button />
+          <this.Button disabled={false} />
         </body>
       </html>
     )
 
   public Counter = ({ count }: { count: number }) => (
     <div id="counter" hx-get="/counter" hx-trigger="button-click from:body" hx-swap="outerHTML">
-      {count}
+      <span>{count}</span>
+      <img class="spinner htmx-indicator" src="/public/images/spinner.svg" />
     </div>
   )
 
-  public Button = () => (
-    <button hx-get="/click" hx-swap="none">
-      Click me!
-    </button>
-  )
+  public Button = ({ disabled }: { disabled: boolean }) => {
+    const attributes: Htmx.Attributes = disabled
+      ? {
+          'hx-trigger': 'counter-loaded from:body',
+          'hx-get': '/button',
+          'hx-swap': 'outerHTML',
+        }
+      : { 'hx-post': '/button', 'hx-swap': 'outerHTML' }
+
+    return (
+      <button disabled={disabled} {...attributes}>
+        Click me!
+      </button>
+    )
+  }
 }

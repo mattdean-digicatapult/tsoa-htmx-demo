@@ -12,4 +12,18 @@ body {
   font-size: 10rem;
 }
 
+#counter {
+  position: relative;
+}
 
+#counter.htmx-request > span {
+  opacity: 0;
+}
+
+.spinner {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+}

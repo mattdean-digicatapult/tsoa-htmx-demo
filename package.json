@@ -9,7 +9,7 @@
   "scripts": {
     "depcheck": "depcheck",
     "test": "bun test",
-    "build": "tsoa spec-and-routes",
+    "tsoa:build": "tsoa spec-and-routes",
     "dev": "bun run --watch src/index.ts",
     "start": "bun run src/index.ts",
     "lint": "prettier -c ./src"
@@ -25,6 +25,7 @@
     "envalid": "^8.0.0",
     "express": "^4.19.2",
     "htmx.org": "^1.9.11",
+    "multer": "^1.4.5-lts.1",
     "pino": "^8.20.0",
     "pino-http": "^9.0.0",
     "swagger-ui-express": "^5.0.0",

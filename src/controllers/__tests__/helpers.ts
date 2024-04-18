@@ -8,7 +8,7 @@ import RootTemplates from '../../views/root'
 export const templateMock = {
   Root: (s: string) => `root_${s}_root`,
   Counter: () => `counter`,
-  Button: () => `button`,
+  Button: ({ disabled }) => `button_${disabled}_button`,
 } as RootTemplates
 export const mockLogger = pino({ level: 'silent' })
 export const counterMock = {
