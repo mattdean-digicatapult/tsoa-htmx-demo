@@ -14,7 +14,7 @@ export default class RootTemplates {
           <Header />
           <title>{Bun.escapeHTML(title)}</title>
         </head>
-        <body>
+        <body hx-ext="json-enc">
           <this.Counter count={count} />
           <this.Button disabled={false} />
         </body>
