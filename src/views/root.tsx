@@ -24,16 +24,19 @@ export default class RootTemplates {
   public Button = ({ disabled }: { disabled: boolean }) => {
     const attributes: Htmx.Attributes = disabled
       ? {
+          'hx-target': 'closest .button-group',
           'hx-trigger': 'counter-loaded from:body',
           'hx-get': '/button',
           'hx-swap': 'outerHTML',
         }
-      : { 'hx-post': '/button', 'hx-swap': 'outerHTML' }
+      : { 'hx-target': 'closest .button-group', 'hx-post': '/button', 'hx-swap': 'outerHTML' }
 
     return (
-      <button disabled={disabled} {...attributes}>
-        Click me!
-      </button>
+      <div class="button-group">
+        <button disabled={disabled} {...attributes}>
+          Click me!
+        </button>
+      </div>
     )
   }
 }
