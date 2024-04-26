@@ -13,13 +13,13 @@ bun install
 And then to building the `tsoa` routes:
 
 ```bash
-bun run build
+bun run tsoa:build
 ```
 
 Finally to run:
 
 ```bash
-bun run src/index.ts
+bun run dev
 ```
 
 ## Tests
