@@ -6,7 +6,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "typeRoots": ["types/*", "node_modules/@types"],
     "forceConsistentCasingInFileNames": true,
@@ -15,6 +15,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "build",
+    "resolveJsonModule": true
+  },
+  "include": ["src", "src/swagger.json"],
+  "exclude": ["**/__tests__"]
 }
