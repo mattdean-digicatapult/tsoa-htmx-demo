@@ -10,8 +10,6 @@ import { SwaggerUiOptions, serve, setup } from 'swagger-ui-express'
 import { logger } from './logger.js'
 import { RegisterRoutes } from './routes.js'
 
-// const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
 export default async (): Promise<Express> => {
   const swaggerBuffer = await fs.readFile(path.join(__dirname, './swagger.json'))
   const swaggerJson = JSON.parse(swaggerBuffer.toString('utf8'))
