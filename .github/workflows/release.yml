@@ -150,7 +150,6 @@ jobs:
             ghcr.io/${{ needs.preconditions.outputs.org_name }}/${{ needs.preconditions.outputs.repo_name }}:${{ github.sha }}
             ${{ steps.generate-tags.outputs.GHCR_VERSION_TAG }}
             ${{ steps.generate-tags.outputs.GHCR_LATEST_TAG }}
-            ${{ needs.preconditions.outputs.org_name }}/${{ needs.preconditions.outputs.repo_name }}:${{ github.sha }}
           labels: |
             org.opencontainers.image.title=${{ needs.preconditions.outputs.repo_name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}
