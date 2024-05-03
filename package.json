@@ -6,12 +6,17 @@
   "type": "commonjs",
   "author": "Digital Catapult",
   "license": "Apache-2.0",
+  "engines": {
+    "node": "^22.0.0",
+    "npm": "^10.0.0"
+  },
   "scripts": {
     "depcheck": "depcheck",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --config ./test/mocharc.json ./src/**/*.test.ts",
     "build": "tsoa:build && tsc",
     "tsoa:build": "tsoa spec-and-routes",
-    "dev": "node --import=tsimp/import --watch src/index.ts",
+    "tsoa:watch": "node --watch-path=./src ./node_modules/.bin/tsoa -- spec-and-routes",
+    "dev": "npm run tsoa:watch & node --import=tsimp/import --watch src/index.ts",
     "start": "node build/index.js",
     "lint": "prettier -c ./src"
   },
