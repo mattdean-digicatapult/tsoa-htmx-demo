@@ -123,19 +123,14 @@ jobs:
         run: |
           if [ "$IS_NEW_VERSION" == "true" ]; then
             echo "GHCR_VERSION_TAG=ghcr.io/${{ needs.preconditions.outputs.org_name }}/${{ needs.preconditions.outputs.repo_name }}:$VERSION" >> $GITHUB_OUTPUT
-            echo "DOCKERHUB_VERSION_TAG=${{ needs.preconditions.outputs.org_name }}/${{ needs.preconditions.outputs.repo_name }}:$VERSION" >> $GITHUB_OUTPUT
             if [ "$IS_PRERELEASE" == "false" ]; then
               echo "GHCR_LATEST_TAG=ghcr.io/${{ needs.preconditions.outputs.org_name }}/${{ needs.preconditions.outputs.repo_name }}:latest" >> $GITHUB_OUTPUT
-              echo "DOCKERHUB_LATEST_TAG=${{ needs.preconditions.outputs.org_name }}/${{ needs.preconditions.outputs.repo_name }}:latest" >> $GITHUB_OUTPUT
             else
               echo "GHCR_LATEST_TAG=" >> $GITHUB_OUTPUT
-              echo "DOCKERHUB_LATEST_TAG=" >> $GITHUB_OUTPUT
             fi;
           else
             echo "GHCR_VERSION_TAG=" >> $GITHUB_OUTPUT
             echo "GHCR_LATEST_TAG=" >> $GITHUB_OUTPUT
-            echo "DOCKERHUB_VERSION_TAG=" >> $GITHUB_OUTPUT
-            echo "DOCKERHUB_LATEST_TAG=" >> $GITHUB_OUTPUT
           fi;
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -143,11 +138,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Login to Dockerhub Registry
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.SQNC_DOCKERHUB_USERNAME }}
-          password: ${{ secrets.SQNC_DOCKERHUB_TOKEN }}
       - name: Build image
         uses: docker/build-push-action@v5
         with:
@@ -161,8 +151,6 @@ jobs:
             ${{ steps.generate-tags.outputs.GHCR_VERSION_TAG }}
             ${{ steps.generate-tags.outputs.GHCR_LATEST_TAG }}
             ${{ needs.preconditions.outputs.org_name }}/${{ needs.preconditions.outputs.repo_name }}:${{ github.sha }}
-            ${{ steps.generate-tags.outputs.DOCKERHUB_VERSION_TAG }}
-            ${{ steps.generate-tags.outputs.DOCKERHUB_LATEST_TAG }}
           labels: |
             org.opencontainers.image.title=${{ needs.preconditions.outputs.repo_name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}
