@@ -1,6 +1,6 @@
 {
   "name": "tsoa-htmx-demo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Demonstration of serving htmx using tsoa",
   "main": "src/index.ts",
   "type": "commonjs",
