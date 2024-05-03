@@ -1,6 +1,6 @@
 {
   "name": "tsoa-htmx-demo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Demonstration of serving htmx using tsoa",
   "main": "src/index.ts",
   "type": "commonjs",
@@ -13,12 +13,14 @@
   "scripts": {
     "depcheck": "depcheck",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --config ./test/mocharc.json ./src/**/*.test.ts",
-    "build": "tsoa:build && tsc",
+    "check": "npm run tsoa:build && tsc --noEmit",
+    "build": "npm run tsoa:build && tsc",
     "tsoa:build": "tsoa spec-and-routes",
     "tsoa:watch": "node --watch-path=./src ./node_modules/.bin/tsoa -- spec-and-routes",
     "dev": "npm run tsoa:watch & node --import=tsimp/import --watch src/index.ts",
     "start": "node build/index.js",
-    "lint": "prettier -c ./src"
+    "lint": "prettier -c ./src",
+    "xss-scan": "xss-scan"
   },
   "dependencies": {
     "@kitajs/html": "^4.1.0",
