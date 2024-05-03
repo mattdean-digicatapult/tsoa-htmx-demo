@@ -1,19 +1,22 @@
-import { describe, expect, it } from 'bun:test'
+import { describe, it } from 'mocha'
+
 import Counter from '../counter'
 
-describe('Counter', () => {
+describe('Counter', async () => {
+  let { expect } = await import('chai')
+
   describe('get', () => {
     it('should return counter state 0 initially', async () => {
       const counter = new Counter()
       const result = counter.get()
-      expect(result).toEqual(0)
+      expect(result).to.equal(0)
     })
 
     it('should return counter state 1 after incrementing', async () => {
       const counter = new Counter()
       counter.increment()
       const result = counter.get()
-      expect(result).toEqual(1)
+      expect(result).to.equal(1)
     })
 
     it('should return counter state 2 after incrementing twice', async () => {
@@ -21,7 +24,7 @@ describe('Counter', () => {
       counter.increment()
       counter.increment()
       const result = counter.get()
-      expect(result).toEqual(2)
+      expect(result).to.equal(2)
     })
   })
 })

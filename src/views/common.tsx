@@ -1,3 +1,5 @@
+import { Html } from '@kitajs/html'
+
 export const Page = (props: Html.PropsWithChildren<{ title: string }>): JSX.Element => (
   <>
     {'<!DOCTYPE html>'}
@@ -7,7 +9,7 @@ export const Page = (props: Html.PropsWithChildren<{ title: string }>): JSX.Elem
         <script src="lib/htmx.org/ext/json-enc.js"></script>
         <link rel="icon" type="image/ico" sizes="48x48" href="/public/images/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/public/styles/main.css" />
-        <title>{Bun.escapeHTML(props.title)}</title>
+        <title>{Html.escapeHtml(props.title)}</title>
       </head>
       <body hx-ext="json-enc">{props.children}</body>
     </html>
